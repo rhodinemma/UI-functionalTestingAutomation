@@ -1,3 +1,5 @@
+package utils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -9,14 +11,14 @@ public class FrameworkProperties {
     public String getProperty(String key) {
         try {
             Properties properties = new Properties();
-            String propFileName = "framework.properties";
+            String propFileName = Constants.PROP_FILE_NAME;
 
             inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
             if(inputStream != null) {
                 properties.load(inputStream);
             }else{
-                System.out.println("Property Not Found");
+                System.out.println(Constants.EXCEPTION_MESSAGE);
             }
 
             String propertyValue = properties.getProperty(key);
