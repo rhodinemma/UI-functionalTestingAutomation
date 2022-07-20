@@ -18,7 +18,7 @@ public class SignInPage {
     private WebElement emailField;
 
     @FindBy(id = "passwd")
-    private WebElement password;
+    private WebElement passwordField;
 
     @FindBy(id = "SubmitLogin")
     private WebElement signInButton;
@@ -31,7 +31,7 @@ public class SignInPage {
 
     public void login(String email, String passwd){
         emailField.sendKeys(email);
-        password.sendKeys(passwd);
+        passwordField.sendKeys(passwd);
         signInButton.click();
     }
 
