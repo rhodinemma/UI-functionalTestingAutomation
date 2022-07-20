@@ -10,8 +10,8 @@ public class DriverSingleton {
     private static DriverSingleton instance = null;
     private static WebDriver driver;
 
-    private DriverSingleton(String driver){
-        instantiate(driver);
+    private DriverSingleton(){
+        instantiate("Chrome");
     }
 
     public WebDriver instantiate(String strategy){
@@ -23,9 +23,9 @@ public class DriverSingleton {
         return driver;
     }
 
-    public static DriverSingleton getInstance(String driver){
+    public static DriverSingleton getInstance(String browser){
         if(instance == null){
-            instance = new DriverSingleton(driver);
+            instance = new DriverSingleton();
         }
 
         return instance;

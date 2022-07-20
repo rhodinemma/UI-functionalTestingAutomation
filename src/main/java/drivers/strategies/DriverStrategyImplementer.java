@@ -5,11 +5,10 @@ import utils.Constants;
 public class DriverStrategyImplementer {
     public static DriverStrategy chooseStrategy(String strategy){
         switch(strategy){
-            case Constants
-                    .CHROME:
+            case "Chrome":
                 return new Chrome();
 
-            case Constants.FIREFOX:
+            case "Firefox":
                 return new Firefox();
 
             default:
