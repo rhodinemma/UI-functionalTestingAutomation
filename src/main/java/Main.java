@@ -21,7 +21,7 @@ public class Main {
         checkoutPage.goToCheckout();
 
         SignInPage signInPage = new SignInPage();
-        signInPage.login("rhodinemma10@gmail.com", "p@ss1234");
+        signInPage.login(frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
 
         checkoutPage.confirmAddress();
         checkoutPage.confirmShipping();

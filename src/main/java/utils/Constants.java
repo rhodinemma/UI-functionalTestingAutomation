@@ -10,4 +10,8 @@ public class Constants {
     public static final String COMPLETE_ORDER = "Your order on My Store is complete.";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
+    public static final String URL = "http://automationpractice.com";
+    public static final String USERNAME = "username";
+    public static final String BROWSER = "browser";
+    public static final String CART_SUMMARY = "2 Products";
 }

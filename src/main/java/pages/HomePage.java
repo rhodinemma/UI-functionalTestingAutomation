@@ -14,7 +14,7 @@ import utils.Constants;
 import java.time.Duration;
 
 public class HomePage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public HomePage(){
         driver = DriverSingleton.getDriver();
@@ -41,6 +41,22 @@ public class HomePage {
 
     @FindBy(css = "#homefeatured > li:nth-child(2)")
     private WebElement secondElement;
+
+    @FindBy(css = "#header > div.nav > div > div > nav > div.header_user_info > a")
+    private WebElement signInButton;
+
+    @FindBy(css = "#header > div.nav > div > div > nav > div:nth-child(1) > a")
+    private WebElement username;
+
+    public void clickSignIn(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.TIMEOUT));
+        wait.until(ExpectedConditions.elementToBeClickable(signInButton));
+        signInButton.click();
+    }
+
+    public String getUsername(){
+        return username.getText();
+    }
 
     public void addFirstElementToCart(){
         Actions hover = new Actions(driver);
