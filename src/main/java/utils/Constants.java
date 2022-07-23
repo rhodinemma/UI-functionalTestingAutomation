@@ -14,4 +14,7 @@ public class Constants {
     public static final String USERNAME = "username";
     public static final String BROWSER = "browser";
     public static final String CART_SUMMARY = "2 Products";
+    public static final String FOLDER_NAME = "screenshots\\";
+    public static final String EXTENSION = ".png";
+    public static final int MAGIC_NUMBER = 4;
 }

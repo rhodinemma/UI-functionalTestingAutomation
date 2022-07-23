@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Constants;
+import utils.Utils;
 
 import java.time.Duration;
 
@@ -91,8 +92,10 @@ public class HomePage {
 
         if(cart.getText().contains(Constants.CART_QUANTITY))
             System.out.println("Cart has been updated");
-        else
+        else {
             System.out.println("Cart has not been updated");
+            Utils.takeScreenshot();
+        }
     }
 
     public void addSecondElementToCart(){
