@@ -48,6 +48,29 @@ public class HomePage {
     @FindBy(css = "#header > div.nav > div > div > nav > div:nth-child(1) > a")
     private WebElement username;
 
+    @FindBy(id = "search_query_top")
+    private WebElement searchBar;
+
+    @FindBy(css = "#searchbox > button")
+    private WebElement searchButton;
+
+    @FindBy(css = "#center_column > ul > li > div > div.left-block > div > a.product_img_link > img")
+    private WebElement searchResults;
+
+    public Boolean searchElement(String searchStr){
+        searchBar.sendKeys(searchStr);
+        searchButton.click();
+
+        try{
+            if(searchResults.isEnabled())
+                return true;
+        } catch (Exception e){
+            return false;
+        }
+
+        return false;
+    }
+
     public void clickSignIn(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(signInButton));
