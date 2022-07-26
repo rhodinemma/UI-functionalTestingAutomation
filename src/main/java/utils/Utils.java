@@ -10,6 +10,7 @@ import java.util.Base64;
 import java.util.Random;
 
 public class Utils {
+    public static int testCount = 0;
     public static String decode64(String encodeStr){
         Base64.Decoder decoder = Base64.getDecoder();
         return new String(decoder.decode(encodeStr.getBytes()));

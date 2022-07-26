@@ -1,10 +1,11 @@
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import drivers.DriverSingleton;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import pages.CheckoutPage;
 import pages.HomePage;
@@ -21,6 +22,8 @@ public class Tests {
     static HomePage homePage;
     static SignInPage signInPage;
     static CheckoutPage checkoutPage;
+    static ExtentTest test;
+    static ExtentReports report = new ExtentReports("report/TestReport.html");
 
     @BeforeClass
     public static void initializeObjects(){
@@ -30,6 +33,7 @@ public class Tests {
         homePage = new HomePage();
         signInPage = new SignInPage();
         checkoutPage = new CheckoutPage();
+        test = report.startTest("Tests");
     }
 
     @Test
@@ -39,6 +43,7 @@ public class Tests {
         homePage.clickSignIn();
         signInPage.login(frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
         assertEquals(frameworkProperties.getProperty(Constants.USERNAME), homePage.getUsername());
+        test.log(LogStatus.PASS, "User successfully authenticated");
     }
 
     @Test
@@ -66,6 +71,8 @@ public class Tests {
 
     @AfterClass
     public static void closeObjects(){
+        report.endTest(test);
+        report.flush();
         driver.close();
     }
 }
