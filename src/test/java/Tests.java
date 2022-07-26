@@ -12,6 +12,7 @@ import pages.HomePage;
 import pages.SignInPage;
 import utils.Constants;
 import utils.FrameworkProperties;
+import utils.Log;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,12 +35,15 @@ public class Tests {
         signInPage = new SignInPage();
         checkoutPage = new CheckoutPage();
         test = report.startTest("Tests");
+        Log.getLogData(Log.class.getName());
+        Log.startTest("Tests");
     }
 
     @Test
     @DisplayName("Should authenticate a user")
     public void testingAuthentication(){
         driver.get(Constants.URL);
+        Log.info("Navigating to " + Constants.URL);
         homePage.clickSignIn();
         signInPage.login(frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
         assertEquals(frameworkProperties.getProperty(Constants.USERNAME), homePage.getUsername());
